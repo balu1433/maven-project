@@ -9,34 +9,33 @@ pipeline{
     pollSCM(' * * * * *')
   }
   stages{
-    stage('Build'){
-        tools{
-          maven 'localMaven'
-          jdk 'localJDK'
-        }
-        steps{
-          bat 'mvn clean package'
-        }
-        post {
-          success {
-            echo 'NOW ARCHIVING'
-            archiveArtifacts artifacts: '**/*.war'
-          }
-        }
-    stage('Deployment'){
-      parellel{
-        stage('Deploy to staging'){
-          steps{
-            bat "winscp -i C:/Users/balu/Documents/study/aws/tomcat-demo.pem **/target/*.war ec2-user@${paramerters.tomcat_dev}:/var/lib/tomcat/webapps"
-          }
-        }
-        stage('Deploy to Prod'){
-          steps{
-              bat "winscp -i C:/Users/balu/Documents/study/aws/tomcat-demo.pem **/target/*.war ec2-user@${paramerters.tomcat_prod}:/var/lib/tomcat/webapps"
-          }
-        }
-      }
-    }    
+      stage('Build'){
+                  tools{
+                      maven 'localMaven'
+                      jdk 'localJDK'
+                  }
+                  steps{
+                      bat 'mvn clean package'
+                  }
+                  post {
+                      success {
+                          echo 'NOW ARCHIVING'
+                          archiveArtifacts artifacts: '**/*.war'
+                      }
+                  }
+      stage('Deployment'){
+            parellel{
+                  stage('Deploy to staging'){
+                      steps{
+                            bat "winscp -i C:/Users/balu/Documents/study/aws/tomcat-demo.pem **/target/*.war ec2-user@${paramerters.tomcat_dev}:/var/lib/tomcat/webapps"
+                      }
+                  }
+                  stage('Deploy to Prod'){
+                      steps{
+                            bat "winscp -i C:/Users/balu/Documents/study/aws/tomcat-demo.pem **/target/*.war ec2-user@${paramerters.tomcat_prod}:/var/lib/tomcat/webapps"
+                      }
+                  }
+            }
+      }    
   }
- }
 }
