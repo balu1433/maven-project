@@ -15,7 +15,7 @@ pipeline{
           jdk 'localJDK'
         }
         steps{
-          sh 'mvn clean package'
+          bat 'mvn clean package'
         }
         post {
           success {
@@ -27,12 +27,12 @@ pipeline{
       parellel{
         stage('Deploy to staging'){
           steps{
-            sh "scp -i C:\Users\balu\Documents\study\aws\tomcat-demo.pem **\target\*.war ec2-user@${paramerters.tomcat_dev}:/var/lib/tomcat/webapps"
+            bat "scp -i C:\Users\balu\Documents\study\aws\tomcat-demo.pem **\target\*.war ec2-user@${paramerters.tomcat_dev}:/var/lib/tomcat/webapps"
           }
         }
         stage('Deploy to Prod'){
           steps{
-              sh "scp -i C:\Users\balu\Documents\study\aws\tomcat-demo.pem **\target\*.war ec2-user@${paramerters.tomcat_prod}:/var/lib/tomcat/webapps"
+              bat "scp -i C:\Users\balu\Documents\study\aws\tomcat-demo.pem **\target\*.war ec2-user@${paramerters.tomcat_prod}:/var/lib/tomcat/webapps"
           }
         }
       }
