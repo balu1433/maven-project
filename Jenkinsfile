@@ -23,10 +23,12 @@ pipeline{
         } 
         stage ('Deploy to Production'){
           steps{
+            retry(3){
             timeout(time:5, unit:'DAYS'){
                 input message : 'Approve PRODUCTION Deployment'
                  }
                 build job: 'deploy-prod'
+            }
           }
           post{
             success{
