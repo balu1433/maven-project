@@ -1,2 +1,2 @@
 Hello, World!
-version =${build_number}
+version 2.0
