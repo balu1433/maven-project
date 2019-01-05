@@ -5,10 +5,13 @@ pipeline{
       string(name: 'tomcat_prod', defaultValue: '54.183.138.36', description: 'production server')
     
   }
-  triggers{
-    pollSCM(' * * * * *')
-  }
+}
   stages{
+      stage('Scm'){
+        steps{
+          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/balu1433/maven-project.git']]])
+        }
+      }
       stage('Build'){
                   tools{
                       maven 'localMaven'
