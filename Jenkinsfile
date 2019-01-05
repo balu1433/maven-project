@@ -14,19 +14,24 @@ pipeline{
       }
 
      stage('Build'){
-                  tools{
-                      maven 'mvn'
-                      jdk 'jdk'
-                  }
-                  steps{
-                      sh 'mvn clean package'
-                  }
-                  post {
-                      success {
-                          echo 'NOW ARCHIVING'
-                          archiveArtifacts artifacts: '**/*.war'
-                      }
-                  }
-      }
+          tools{
+               maven 'mvn'
+               jdk 'jdk'
+          }
+          steps{
+               sh 'mvn clean package'
+          }
+          post {
+               success {
+                       echo 'NOW ARCHIVING'
+                       archiveArtifacts artifacts: '**/*.war'
+               }
+          }
+     }
+     stage('Deployment'){
+          steps{
+                sh 'ls -lrt'
+          }
+     }
    } 
 }
