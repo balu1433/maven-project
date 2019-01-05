@@ -5,7 +5,7 @@ pipeline{
       string(name: 'tomcat_prod', defaultValue: '54.183.138.36', description: 'production server')
     
   }
-}
+
   stages{
       stage('Scm'){
         steps{
