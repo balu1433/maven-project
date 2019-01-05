@@ -29,18 +29,10 @@ pipeline{
                   }
       }
       stage('Deployment'){
-            parallel{
-                  stage('Deploy to staging'){
+                 stage('Deploy to staging'){
                       steps{
                          sh 'scp -i /var/tmp/tomcat-demo.pem webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps'
                       }
                   }
-                  stage('Deploy to Prod'){
-                      steps{
-                         sh  'scp -i /var/tmp/tomcat-demo.pem webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat/webapps'
-                      }
-                  }
-            }
-      }    
-  }
-}
+      }
+}    
