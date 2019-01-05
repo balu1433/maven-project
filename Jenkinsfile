@@ -30,7 +30,7 @@ pipeline{
       }
       stage('Deployment'){
                  steps{
-                         sh 'scp -i /var/tmp/tomcat-demo.pem webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps'
+                         sh 'ls -lrt'
                       }
       }
    } 
