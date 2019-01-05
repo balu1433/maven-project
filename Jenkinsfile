@@ -32,12 +32,12 @@ pipeline{
             parallel{
                   stage('Deploy to staging'){
                       steps{
-                           scp -i /var/tmp/tomcat-demo.pem webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps
+                           'scp -i /var/tmp/tomcat-demo.pem webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps'
                       }
                   }
                   stage('Deploy to Prod'){
                       steps{
-                           scp -i /var/tmp/tomcat-demo.pem webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat/webapps
+                           'scp -i /var/tmp/tomcat-demo.pem webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat/webapps'
                       }
                   }
             }
