@@ -34,7 +34,7 @@ pipeline{
                jdk 'jdk'
           }
           steps{
-                sh  'scp -i /var/tmp/tomcat-demo.pem webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps'
+                scp -i /var/tmp/tomcat-demo.pem webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps
           }
      }
    } 
