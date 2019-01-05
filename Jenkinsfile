@@ -6,13 +6,7 @@ pipeline{
     
   }
 
-  stages{
-      stage('Scm'){
-        steps{
-          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/balu1433/maven-project.git']]])
-        }
-      }
-      stage('Build'){
+     stage('Build'){
                   tools{
                       maven 'mvn'
                       jdk 'jdk'
