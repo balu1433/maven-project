@@ -30,7 +30,7 @@ pipeline{
       }
       stage('Deployment'){
                  steps{
-                          ls -lrt
+                         sh 'ls -lrt'
                       }
       }
    } 
