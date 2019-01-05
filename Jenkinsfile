@@ -28,10 +28,5 @@ pipeline{
                       }
                   }
       }
-      stage('Deployment'){
-                 steps{
-                         sh 'ls -lrt'
-                      }
-      }
    } 
 }
