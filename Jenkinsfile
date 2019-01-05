@@ -14,8 +14,8 @@ pipeline{
       }
       stage('Build'){
                   tools{
-                      maven 'localMaven'
-                      jdk 'localJDK'
+                      maven 'mvn'
+                      jdk 'jdk'
                   }
                   steps{
                       bat 'mvn clean package'
