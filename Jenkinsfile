@@ -34,7 +34,7 @@ pipeline{
                jdk 'jdk'
           }
           steps{
-               ls 'ls -lrt '
+               'ls -lrt '
           }
      }
    } 
