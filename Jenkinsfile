@@ -28,14 +28,5 @@ pipeline{
                }
           }
      }
-     stage('Deployment'){
-          tools{
-               maven 'mvn'
-               jdk 'jdk'
-          }
-          steps{
-               ls -lrt 
-          }
-     }
    } 
 }
