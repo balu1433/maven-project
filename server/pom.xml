@@ -13,11 +13,11 @@
   <artifactId>server</artifactId>
   <packaging>jar</packaging>
   <name>Server</name> 
-  <version>2018.4.0</version>
+  <version>2018.4.0.${buildnumber}</version>
   <description>Logic.</description>
 
   <build>
-    <finalName>${project.artifactId}-${project.version}-SNAPSHOT</finalName>
+    <finalName>${project.artifactId}-${project.version}</finalName>
   </build>
 
   <dependencies>
